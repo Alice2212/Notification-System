@@ -31,6 +31,8 @@ class _GoogleMapScreenState extends State<GoogleMapScreen> {
     final applicationBloc = Provider.of<ApplicationBloc>(context);
     return Scaffold(
       appBar: AppBar(
+         backgroundColor: Colors.red[400],
+         elevation: 1,
         title:Text('Google Map '),
         actions: [],
         ),

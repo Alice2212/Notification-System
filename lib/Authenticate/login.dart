@@ -125,133 +125,126 @@ class _SignInState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: SafeArea(
-      child: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 30),
-                child: Container(
-                  child: Image(
-                    image: AssetImage(
-                      'assets/login.png',
-                    ),
-                    width: 200,
-                    height: 200,
+        body: SingleChildScrollView(
+      child: Container(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 30),
+              child: Container(
+                child: Image(
+                  image: AssetImage(
+                    'assets/login.png',
                   ),
+                  width: 200,
+                  height: 200,
                 ),
               ),
+            ),
 
-              Container(
-                child: Form(
-                  autovalidateMode: AutovalidateMode.always,
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      Padding(
-                        // padding: const EdgeInsets.all(20),
-                        padding: const EdgeInsets.only(
-                            bottom: 10, top: 0, left: 20, right: 20),
-
-                        child: TextFormField(
-                          validator: (value) => EmailValidator.validate(value)
-                              ? null
-                              : "Please enter a valid email",
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(20.0)),
-                            labelText: 'Email',
-                            hintText: 'abcd@mail.com',
-                            prefix: Icon(Icons.email),
-                          ),
-                          onSaved: (input) => _email = input,
+            Container(
+              child: Form(
+                autovalidateMode: AutovalidateMode.always,
+                key: _formKey,
+                child: Column(
+                  children: [
+                
+                    Padding(
+                      // padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.only(bottom:10, top: 0, left:20, right: 20),
+                      
+                    child: Row(
+                    children: <Widget>[
+                      IconButton(icon: Icon(Icons.email), onPressed: null),
+                      Expanded(
+                      child: TextFormField(
+                        validator: (value) => EmailValidator.validate(value)
+                            ? null
+                            : "Please enter a valid email",
+                        decoration: InputDecoration(
+                          labelText: 'Email',
+                          hintText: 'abcd@mail.com',
                         ),
+                        onSaved: (input) => _email = input,
                       ),
+                    ),]
+                    ),),
 
-                      Padding(
-                        // padding: const EdgeInsets.all(20),
-                        padding: const EdgeInsets.only(
-                            bottom: 20, top: 0, left: 20, right: 20),
-                        child: TextFormField(
-                          // ignore: missing_return
-                          validator: (input) {
-                            if (input.length < 6)
-                              return 'Provide Minimum of 6 character with uppercase\nand a character';
-                          },
-
-                          decoration: InputDecoration(
-                            border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(20.0),
-                            ),
-                            hintText: "Password",
-                            labelText: 'Password',
-                            prefix: Icon(Icons.lock_outlined),
-                          ),
-                          obscureText: true,
-                          onSaved: (input) => _password = input,
-                        ),
-                      ),
-
-                      //forget password section
-                      // ignore: deprecated_member_use
-                      FlatButton(
-                        onPressed: () {
-                          //forgot password screen
+                    Padding(
+                      // padding: const EdgeInsets.all(20),
+                      padding: const EdgeInsets.only(bottom:20, top: 0, left:20, right: 20),
+                    child: Row(
+                      children: <Widget>[
+                      IconButton(icon: Icon(Icons.visibility_off_outlined), onPressed: null),
+                      Expanded(
+                      child: TextFormField(
+                        // ignore: missing_return
+                        validator: (input) {
+                          if (input.length < 6)
+                            return 'Password is miminum 6 character with uppercase\nand a character';
                         },
-                        textColor: Colors.blue,
-                        child: Text('Forgot Password ?'),
-                      ),
 
-                      // ignore: deprecated_member_use
-                      RaisedButton(
-                        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-                        // padding: EdgeInsets.only(left: 30, right: 30),
-                        onPressed: login,
-                        child: Text(
-                          'Sign In',
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold),
+                        decoration: InputDecoration(
+                          hintText: "Password",
+                          labelText: 'Password',
                         ),
-
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(16)),
-                        color: Colors.blue,
+                        obscureText: true,
+                        onSaved: (input) => _password = input,
                       ),
-                    ],
-                  ),
-                ),
-              ),
+                    ),],),),
 
-              Container(
-                child: Row(
-                  children: <Widget>[
-                    Text('Does not have account?'),
-                    // ignore: deprecated_member_use
+                    //forget password section
+                  
                     FlatButton(
+                      onPressed: () {
+                        //forgot password screen
+                      },
                       textColor: Colors.blue,
+                      child: Text('Forgot Password ?'),
+                    ),
+
+                    // ignore: deprecated_member_use
+                    RaisedButton(
+                      padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                      // padding: EdgeInsets.only(left: 30, right: 30),
+                      onPressed: login,
                       child: Text(
-                        'Sign Up',
-                        style: TextStyle(fontSize: 20),
+                        'Sign In',
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold),
                       ),
-                      onPressed: navigateToSignUp,
-                    )
+
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(16)),
+                      color: Colors.blue,
+                    ),
                   ],
-                  mainAxisAlignment: MainAxisAlignment.center,
                 ),
               ),
+            ),
 
-              //  GestureDetector(
-              //    child: Padding(
-              //      padding: const EdgeInsets.all(10.0),
-              //      child: Text('Create an account?', style: TextStyle(fontSize: 20),),
-              //    ),
-              //    onTap: navigateToSignUp,
-              //  )
-            ],
-          ),
+            Container(
+              child: Row(
+                children: <Widget>[
+                  Text('Does not have account?'),
+                  // ignore: deprecated_member_use
+                  FlatButton(
+                    textColor: Colors.blue,
+                    child: Text(
+                      'Sign Up',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    onPressed: navigateToSignUp,
+                  )
+                ],
+                mainAxisAlignment: MainAxisAlignment.center,
+              ),
+            ),
+
+            
+          ],
         ),
       ),
     ));

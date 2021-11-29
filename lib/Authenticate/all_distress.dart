@@ -2,6 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:new_app/Authenticate/admin_login.dart';
+
+import 'DistressMap.dart';
 
 class AllDistress extends StatefulWidget {
   const AllDistress({Key key}) : super(key: key);
@@ -15,8 +18,20 @@ class _AllDistressState extends State<AllDistress> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
+         backgroundColor: Colors.red[400],
+         elevation: 1,
           title: Text("All Distress"),
           centerTitle: true,
+          leading: IconButton(
+          onPressed: (){
+               Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => AdminLoginPage()));
+          },
+          icon: Icon(
+            Icons.arrow_back
+            ),
+          ),
         ),
         body: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
           stream: FirebaseFirestore.instance.collection("distress").snapshots(),
@@ -93,11 +108,23 @@ class _AllDistressState extends State<AllDistress> {
                                 SizedBox(height: 5),
                                 Text(currentSnapshot["description"]),
                                 SizedBox(height: 5),
-                                Text(
-                                    "Latitude: ${currentSnapshot["latitude"]}, Longitude: ${currentSnapshot["longitude"]}")
+                               // Text(
+                                //
+                                //    "Latitude: ${currentSnapshot["latitude"]}, Longitude: ${currentSnapshot["longitude"]}")
+                              
+                                Text(snapshot.data.docs[index]['latitude'].toString()),
+                                Text(snapshot.data.docs[index]['latitude'].toString()),
+
                               ],
                             ),
-                            trailing: Text(obtainedDate),
+                          //  trailing: Text(obtainedDate),
+                        //  trailing: IconButton(
+                        //    icon: Icon(Icons.directions),
+                        //    onPressed: (){
+                        //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>
+                        //   DistressMap(user_id: snapshot.data.docs[index].id)
+                        //   ));
+                        //   },)
                           );
                         },
                       );

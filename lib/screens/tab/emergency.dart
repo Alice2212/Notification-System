@@ -39,7 +39,7 @@ class _EmergencePageState extends State<EmergencePage> {
     final uid = user.uid;
     print(uid);
     return users.doc(uid).collection("emergence").add({
-      "emergence": "peter you need to save someone",
+      "emergence": "Please help am in emergency",
       "latitude": lati,
       "longitude": longi
     });
@@ -142,44 +142,32 @@ class _EmergencePageState extends State<EmergencePage> {
               ),
             ),
 
-            // Container(
-            //   child: Image(
-            //    image:AssetImage('images/gym.jpg')
-            //     ),
-            //   ),
-
-            // RaisedButton(
-            //     padding: EdgeInsets.only(left: 10, right: 30),
-            //     onPressed:(){
-            //       signOut();
-            //     },
-            //     child: Text('Sign Out',
-            //             style: TextStyle(
-            //               fontSize:20,
-            //               color: Colors.white,
-            //               fontWeight: FontWeight.bold ),),
-
-            //           shape: RoundedRectangleBorder(
-            //               borderRadius: BorderRadius.circular(10)
-            //           ),
-            //           color: Colors.deepOrange,
-            //     ),
-
             Container(
                 child: Container(
               width: 330,
               height: 200,
-              padding: new EdgeInsets.only(top: 50.0),
+              padding: new EdgeInsets.only(top: 50.0, left: 25.0),
               child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0),
                   ),
-                  // color: Colors.grey[50],
-                  // elevation: 10,
-                  child: Row(
+                  child: Column(
                     // mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.only(
+                            top: 5.0, bottom: 0.0, left: 5.0, right: 5.0),
+                        child: Text(
+                          "Want to add description of emergency event, click the button ",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.grey[400],
+                              // fontWeight: FontWeight.w500,
+                              fontFamily: 'Open Sans',
+                              fontSize: 20),
+                        ),
+                      ),
                       RaisedButton(
                         onPressed: () {
                           Navigator.push(
@@ -193,16 +181,6 @@ class _EmergencePageState extends State<EmergencePage> {
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
-                      ),
-                      RaisedButton(
-                        onPressed: () {
-                          DetailReportPage();
-                        },
-                        child: Text(
-                          "Description",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(16)),
                         color: Colors.blue,
@@ -210,53 +188,6 @@ class _EmergencePageState extends State<EmergencePage> {
                     ],
                   )),
             )),
-
-            SizedBox(
-              height: 150,
-            ),
-            Align(
-              alignment: Alignment.bottomRight,
-              child: AvatarGlow(
-                endRadius: 100,
-                glowColor: Colors.grey,
-                duration: Duration(milliseconds: 2000),
-                repeat: true,
-                repeatPauseDuration: Duration(milliseconds: 100),
-                child: Material(
-                  elevation: 8.0,
-                  shape: CircleBorder(),
-                  child: CircleAvatar(
-                    radius: 40,
-                    backgroundColor: Colors.white,
-                    child: IconButton(
-                        icon: Icon(
-                          Icons.call,
-                          color: Colors.red[700],
-                          size: 36,
-                        ),
-                        onPressed: () async {
-                          launch('tel://$number');
-                          await FlutterPhoneDirectCaller.callNumber(number);
-                        }),
-                  ),
-                ),
-              ),
-            ),
-
-            //       CircleAvatar(
-            //         backgroundColor: Colors.red,
-            //         child: IconButton(
-            //            onPressed: () async{
-            //           launch('tel://$number');
-            //           await FlutterPhoneDirectCaller.callNumber(number);
-            //         },
-            //         icon: Icon(Icons.call,
-            //         color: Colors.white,
-
-            //         )
-            //   ),
-
-            // )
           ],
         ),
       ),

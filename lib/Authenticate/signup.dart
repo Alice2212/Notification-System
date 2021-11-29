@@ -166,20 +166,23 @@ class _SignUpState extends State<SignUp> {
                 Padding(
                   padding: EdgeInsets.only(top: 50, left: 20),
                   child: Text(
-                    "PERSONAL DETAILS",
+                    "BIO DATA",
                     style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: 5,
-                  ),
-                  // child: Text("please enter your details",
-                  //   style: TextStyle(
-                  //     fontSize: 20,
-                  //     fontWeight: FontWeight.bold),
-                  //     ),
-                ),
+
+                Padding( 
+                  padding: EdgeInsets.only(top:5.0, bottom: 0.0),
+                  child: Text(
+                    "Please Fill the form ",
+                    textAlign: TextAlign.center,
+                    style:TextStyle(
+                      color: Colors.grey[400],
+                      // fontWeight: FontWeight.w500,
+                      fontFamily: 'Open Sans',
+                      fontSize: 20),
+                  ),),
+               
               ],
             ),
             Container(
@@ -193,29 +196,35 @@ class _SignUpState extends State<SignUp> {
                         getImage();
                       },
                       child: Center(
-                        child: CircleAvatar(
-                          radius: 50,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(80),
-                            child: _image == null
-                                ? Icon(
-                                    Icons.photo_camera,
-                                    color: Colors.white,
-                                  )
-                                : Image.file(
-                                    _image,
-                                    fit: BoxFit.cover,
-                                  ),
-                          ),
-                          backgroundColor: Colors.grey[400],
-                        ),
-                      ),
+                        // child: CircleAvatar(
+                        //   radius: 50,
+                        //   child: ClipRRect(
+                        //     borderRadius: BorderRadius.circular(80),
+                        //     child: _image == null
+                        //         ? Icon(
+                        //             Icons.photo_camera,
+                        //             color: Colors.white,
+                        //           )
+                        //         : Image.file(
+                        //             _image,
+                        //             fit: BoxFit.cover,
+                        //           ),
+                        //   ),
+                        //   backgroundColor: Colors.grey[400],
+                        // )
+                     ),
                     ),
 
                     // name field
                     Padding(
                       padding: const EdgeInsets.only(
                           top:10, bottom: 0, left: 25, right: 25),
+                          child: Row(
+                        children: <Widget>[
+                          IconButton(
+                              icon: Icon(Icons.person_add_alt),
+                              onPressed: null),
+                          Expanded(
                       child: TextFormField(
                         // ignore: missing_return
                         validator: (input) {
@@ -223,22 +232,28 @@ class _SignUpState extends State<SignUp> {
                         },
                         decoration: InputDecoration(
                           labelText: 'Name',
-                          prefix: Icon(Icons.person),
-                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            //border:BorderRadius.circular(10),
-                          )
+                         // prefix: Icon(Icons.person),
+                          //  border: OutlineInputBorder(
+                          //   borderRadius: BorderRadius.circular(20.0),
+                          //   //border:BorderRadius.circular(10),
+                          // )
                           // border:BorderRadius.circular(10),
                         ),
 
                         onSaved: (input) => _name = input,
                       ),
-                    ),
+                    ),],),),
 
                     // Email field
                     Padding(
                       padding: const EdgeInsets.only(
                           top: 0, bottom: 5, left: 25, right: 25),
+                      child: Row(
+                        children: <Widget>[
+                          IconButton(
+                              icon: Icon(Icons.email_rounded),
+                              onPressed: null),
+                          Expanded(
                       child: TextFormField(
                         validator: (value) => EmailValidator.validate(value)
                             ? null
@@ -246,20 +261,25 @@ class _SignUpState extends State<SignUp> {
                         decoration: InputDecoration(
                           labelText: 'Email',
                           hintText: 'abcd@mail.com',
-                          prefix: Icon(Icons.email_sharp),
-                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            //border:BorderRadius.circular(10),
-                          ),
+                         // prefix: Icon(Icons.email_sharp),
                         ),
                         onSaved: (input) => _email = input,
                       ),
+                          ),
+                      ],
+                          ),
                     ),
 
                     //Phone number field
                     Padding(
                         padding: const EdgeInsets.only(
                             top: 5, bottom: 5, left: 25, right: 25),
+                        child: Row(
+                        children: <Widget>[
+                          IconButton(
+                              icon: Icon(Icons.call),
+                              onPressed: null),
+                          Expanded(
                         child: TextFormField(
                           // ignore: missing_return
                           validator: (input) {
@@ -268,16 +288,16 @@ class _SignUpState extends State<SignUp> {
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                             labelText: 'Mobile Number',
-                            prefix: Icon(Icons.call),
-                             border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            //border:BorderRadius.circular(10),
-                          )
+                           // prefix: Icon(Icons.call),
+                          //    border: OutlineInputBorder(
+                          //   //borderRadius: BorderRadius.circular(20.0),
+                          //   //border:BorderRadius.circular(10),
+                          // )
                             //border:BorderRadius.circular(10),
                           ),
                           obscureText: true,
                           onSaved: (input) => _mobileNumber = input,
-                        )),
+                        )),],),),
 
                     //Gender field
                     Padding(
@@ -299,6 +319,7 @@ class _SignUpState extends State<SignUp> {
                                     _selectedGender = value;
                                   });
                                 },
+                                activeColor: Colors.blue,
                               ),
                               title: Text('Male'),
                             ),
@@ -311,6 +332,7 @@ class _SignUpState extends State<SignUp> {
                                     _selectedGender = value;
                                   });
                                 },
+                                activeColor: Colors.blue,
                               ),
                               title: Text('Female'),
                             ),
@@ -325,6 +347,12 @@ class _SignUpState extends State<SignUp> {
                     Padding(
                         padding: EdgeInsets.only(
                             top: 5, bottom: 5, left: 25, right: 25),
+                        child: Row(
+                        children: <Widget>[
+                          IconButton(
+                              icon: Icon(Icons.date_range),
+                              onPressed: null),
+                          Expanded(    
                         child: DateTimePicker(
                           initialValue: '',
                           type: DateTimePickerType.date,
@@ -336,11 +364,12 @@ class _SignUpState extends State<SignUp> {
                           },
                           decoration: InputDecoration(
                               labelText: 'Date of Birth',
-                               border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            //border:BorderRadius.circular(10),
-                          ),
-                              prefix: Icon(Icons.date_range)),
+                          //      border: OutlineInputBorder(
+                          //   borderRadius: BorderRadius.circular(20.0),
+                          //   //border:BorderRadius.circular(10),
+                          // ),
+                           //   prefix: Icon(Icons.date_range)
+                           ),
                           onChanged: (value) {
                             if (value.isNotEmpty) {
                               setState(() {
@@ -348,13 +377,19 @@ class _SignUpState extends State<SignUp> {
                               });
                             }
                           },
-                        )),
+                        )),],),),
 
                     //Address field
                     SizedBox(height: 10, width: 50,),
                     Padding(
                         padding: EdgeInsets.only(
                             top: 5, bottom: 5, left: 25, right: 25),
+                            child: Row(
+                        children: <Widget>[
+                          IconButton(
+                              icon: Icon(Icons.location_city_rounded),
+                              onPressed: null),
+                          Expanded(
                         child: TextFormField(
                           // ignore: missing_return
                           validator: (input) {
@@ -363,43 +398,49 @@ class _SignUpState extends State<SignUp> {
 
                           decoration: InputDecoration(
                             labelText: 'Address',
-                            prefix: Icon(Icons.location_city),
-                             border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            //border:BorderRadius.circular(10),
-                          )
+                          //   prefix: Icon(Icons.location_city),
+                          //    border: OutlineInputBorder(
+                          //   borderRadius: BorderRadius.circular(20.0),
+                          //   //border:BorderRadius.circular(10),
+                          // )
                             //border:BorderRadius.circular(10),
                           ),
                           onSaved: (input) => _address = input,
-                        )),
+                        )),],),),
 
                     // Occupation field
-                    Padding(
-                        padding: EdgeInsets.only(
-                            top: 5, bottom: 5, left: 25, right: 25),
-                        child: TextFormField(
-                          // ignore: missing_return
-                          validator: (input) {
-                            if (input.isEmpty) return 'Enter Occupation';
-                          },
+                    // Padding(
+                    //     padding: EdgeInsets.only(
+                    //         top: 5, bottom: 5, left: 25, right: 25),
+                    //     child: TextFormField(
+                    //       // ignore: missing_return
+                    //       validator: (input) {
+                    //         if (input.isEmpty) return 'Enter Occupation';
+                    //       },
 
-                          decoration: InputDecoration(
-                            labelText: 'Occupation',
-                            prefix: Icon(Icons.work_off_outlined),
-                             border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            //border:BorderRadius.circular(10),
-                          )
-                            //border:BorderRadius.circular(10),
-                          ),
-                          onSaved: (input) => _occupation = input,
-                        )),
+                    //       decoration: InputDecoration(
+                    //         labelText: 'Occupation',
+                    //         prefix: Icon(Icons.work_off_outlined),
+                    //          border: OutlineInputBorder(
+                    //         borderRadius: BorderRadius.circular(20.0),
+                    //         //border:BorderRadius.circular(10),
+                    //       )
+                    //         //border:BorderRadius.circular(10),
+                    //       ),
+                    //       onSaved: (input) => _occupation = input,
+                    //     )),
 
                     //Password field
                     SizedBox(height: 5),
                     Padding(
                         padding: EdgeInsets.only(
                             top: 5, bottom: 5, left: 25, right: 25),
+                            child: Row(
+                        children: <Widget>[
+                          IconButton(
+                              icon: Icon(Icons.lock_rounded),
+                              onPressed: null),
+                          Expanded(
                         child: TextFormField(
                           // ignore: missing_return
                           validator: Validators.compose([
@@ -416,15 +457,16 @@ class _SignUpState extends State<SignUp> {
 
                           decoration: InputDecoration(
                             labelText: 'Password',
-                            prefix: Icon(Icons.lock_rounded),
+                          //   prefix: Icon(Icons.lock_rounded),
                             
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            //border:BorderRadius.circular(10),
-                          )),
+                          // border: OutlineInputBorder(
+                          //   borderRadius: BorderRadius.circular(20.0),
+                          //   //border:BorderRadius.circular(10),
+                          // )
+                          ),
                           obscureText: true,
                           onSaved: (input) => _password = input,
-                        )),
+                        )),],),),
 
                     //location field
                     // Padding(

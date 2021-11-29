@@ -17,6 +17,9 @@ class _HistoriesState extends State<Histories> {
     //final detailed = Provider.of<List<Detail>>(context);
     return Scaffold(
       appBar: AppBar(
+        
+         backgroundColor: Colors.red[400],
+         elevation: 1,
         title: Text('USERS HISTORY'),
         leading: IconButton(
           onPressed: (){

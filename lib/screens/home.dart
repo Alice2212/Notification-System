@@ -156,13 +156,7 @@ class _WelcomeState extends State<Welcome> with SingleTickerProviderStateMixin {
                           Navigator.of(context).pushReplacementNamed("welcome");
                       },
                     ),
-                    ListTile(
-                      title:Text("Message"),
-                      leading:Icon(Icons.chat, color:Colors.black),
-                      onTap: (){
-                        Navigator.of(context).pushReplacementNamed("SmsFile");
-                      },
-                    ),
+                    
                     ListTile(
                       title:Text("History", ),
                       leading:Icon(Icons.history_edu_outlined, color:Colors.black),

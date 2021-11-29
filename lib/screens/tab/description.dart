@@ -58,6 +58,8 @@ class _DetailReportPageState extends State<DetailReportPage> {
     final applicationBloc = Provider.of<ApplicationBloc>(context);
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.red[400],
+        elevation: 1,
         title: Text('Emegency description'),
         leading: IconButton(
           onPressed: () {
@@ -84,14 +86,14 @@ class _DetailReportPageState extends State<DetailReportPage> {
                         controller: _subject,
                         // ignore: missing_return
                         validator: (input) {
-                          if (input.isEmpty) return 'Incident Subject';
+                          if (input.isEmpty) return 'Emergency details';
                         },
 
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
-                          hintText: "Crime",
-                          labelText: 'Type of Crime',
-                          //prefix: Icon(Icons.),
+                            hintText: "Enter emergency descripiton",
+                             labelText: 'Emergency subject',
+                         
                         ),
                         onChanged: (value) {
                           detailedProvider.changeSubject(value);
@@ -100,28 +102,7 @@ class _DetailReportPageState extends State<DetailReportPage> {
                         //onSaved: (input)=>_name=input,
                       ),
                     ),
-                    // Padding(
-                    //     padding: EdgeInsets.all(8.0),
-                    //     child:DateTimePicker(
-                    //     initialValue: '',
-                    //     type: DateTimePickerType.date,
-                    //     dateLabelText: 'Select Date of Birth',
-                    //     firstDate: DateTime(1960),
-                    //     lastDate: DateTime.now().add(Duration(days: 365)),
-                    //     validator: (value){
-                    //       return null;
 
-                    //     },
-                    //     onChanged: (value){
-                    //       if(value.isNotEmpty){
-                    //           setState((){
-                    //             _doi = value as TextEditingController;
-                    //         });
-                    //       }
-                    //     },
-
-                    //   )
-                    // ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
@@ -132,7 +113,7 @@ class _DetailReportPageState extends State<DetailReportPage> {
                         },
 
                         decoration: InputDecoration(
-                            border: OutlineInputBorder(),
+                            
                             labelText: 'Address',
                             hintText: 'Enter Address'),
                         onChanged: (value) {
@@ -169,7 +150,7 @@ class _DetailReportPageState extends State<DetailReportPage> {
                               onChanged: (value) {
                                 detailedProvider.changeDescription(value);
                               },
-                              //onSaved: (input)=>_email=input,
+                             
                             ),
                           ),
                         ),
@@ -200,7 +181,7 @@ class _DetailReportPageState extends State<DetailReportPage> {
                     Padding(
                       padding: const EdgeInsets.only(top: 20, left: 10),
                       child: Text(
-                        "EVIDENCE OF THE CRIME",
+                        "Add images",
                         style: TextStyle(
                             fontSize: 25,
                             color: Colors.indigo[900],
@@ -245,7 +226,7 @@ class _DetailReportPageState extends State<DetailReportPage> {
                         }
                       },
                       child: Text(
-                        'Report',
+                        'Submit',
                         style: TextStyle(
                             fontSize: 20,
                             color: Colors.white,
@@ -253,7 +234,7 @@ class _DetailReportPageState extends State<DetailReportPage> {
                       ),
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(10)),
-                      color: Colors.indigo[900],
+                      color: Colors.blue,
                     ),
                   ],
                 ),

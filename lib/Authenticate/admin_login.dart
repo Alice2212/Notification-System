@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:new_app/Authenticate/all_distress.dart';
+import 'package:new_app/screens/home.dart';
 //import 'package:form_demo_app/sign_up.dart';
 
 class AdminLoginPage extends StatefulWidget {
@@ -112,6 +113,22 @@ class _AdminLoginState extends State<AdminLoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
+      appBar: AppBar(
+         backgroundColor: Colors.red[400],
+         elevation: 1,
+        title: Text('Admin'),
+        leading: IconButton(
+          onPressed: (){
+               Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Welcome()));
+          },
+          icon: Icon(
+            Icons.arrow_back
+            ),
+          ),
+      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.all(10),
@@ -129,6 +146,8 @@ class _AdminLoginState extends State<AdminLoginPage> {
                       style: TextStyle(fontSize: 20),
                     ),
                   ),
+
+
 
                   //form section
                   SizedBox(
