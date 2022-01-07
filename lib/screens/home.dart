@@ -206,32 +206,32 @@ class _WelcomeState extends State<Welcome> with SingleTickerProviderStateMixin {
               ),
 
 
-              //bottom nav
-                bottomNavigationBar: BottomNavigationBar(
-              currentIndex: 0, // this will be set when a new tab is tapped
-              items: [
-                BottomNavigationBarItem(
-                  icon: new Icon(Icons.home),
-                  title: new Text('Home'),
+            //   //bottom nav
+            //     bottomNavigationBar: BottomNavigationBar(
+            //   currentIndex: 0, // this will be set when a new tab is tapped
+            //   items: [
+            //     BottomNavigationBarItem(
+            //       icon: new Icon(Icons.home),
+            //       title: new Text('Home'),
                   
-                ),
-                BottomNavigationBarItem(
-                  icon: new Icon(Icons.history_sharp),
-                  title: new Text('History'),
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.location_on_rounded),
-                  title: Text('Location'),
-                ),
-              ],
-              // type: BottomNavigationBarType.shifting,  
-              // currentIndex: _selectedIndex,  
-              // selectedItemColor: Colors.black,  
-              // iconSize: 40,  
-              // onTap: _onItemTapped,  
-              // elevation: 5 
-            ),
-            // ends here 
+            //     ),
+            //     BottomNavigationBarItem(
+            //       icon: new Icon(Icons.history_sharp),
+            //       title: new Text('History'),
+            //     ),
+            //     BottomNavigationBarItem(
+            //       icon: Icon(Icons.location_on_rounded),
+            //       title: Text('Location'),
+            //     ),
+            //   ],
+            //   // type: BottomNavigationBarType.shifting,  
+            //   // currentIndex: _selectedIndex,  
+            //   // selectedItemColor: Colors.black,  
+            //   // iconSize: 40,  
+            //   // onTap: _onItemTapped,  
+            //   // elevation: 5 
+            // ),
+            // // ends here 
           
               body:TabBarView(
                     children: <Widget>[

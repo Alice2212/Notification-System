@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:intl/intl.dart';
 import 'package:new_app/Authenticate/admin_login.dart';
 
@@ -115,13 +116,30 @@ class _AllDistressState extends State<AllDistress> {
                                 Text(snapshot.data.docs[index]['latitude'].toString()),
                                 Text(snapshot.data.docs[index]['latitude'].toString()),
 
+                                Container(
+                                    height: 300,
+                                    child: GoogleMap(
+                                    myLocationEnabled: true,
+                                    // onMapCreated: onMapCreated,
+                                    // markers:{
+                                    //   Marker(icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueMagenta))
+                                    // } ,
+                                       initialCameraPosition: CameraPosition(
+                                        target: LatLng(
+                                          double.parse(snapshot.data.docs[index]['latitude']),double.parse(snapshot.data.docs[index]['longitude'])),
+                                        zoom: 15,
+                                        )
+                                    ),
+                                ),
+
                               ],
                             ),
-                          //  trailing: Text(obtainedDate),
-                        //  trailing: IconButton(
-                        //    icon: Icon(Icons.directions),
-                        //    onPressed: (){
-                        //   Navigator.of(context).push(MaterialPageRoute(builder: (context)=>
+                        // trailing: Text(obtainedDate),
+                        trailing: IconButton(
+                          onPressed: (){
+                          Navigator.of(context).push(MaterialPageRoute(builder: (context)=>DistressMap(user_id: snapshot.data.docs[index].id)));
+                        },           icon: Icon(Icons.map)
+                        )
                         //   DistressMap(user_id: snapshot.data.docs[index].id)
                         //   ));
                         //   },)
